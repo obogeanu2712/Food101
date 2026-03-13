@@ -1,0 +1,50 @@
+compute_stats.py – stats summary on whole data
+==================================================
+
+37600/37600
+
+[train]
+
+Processed 75750 images (17,811,594,752 pixels)
+Mean: R=0.549306  G=0.444997  B=0.343505
+Std:  R=0.272873  G=0.275825  B=0.279800
+
+curate.py – curation summary
+==================================================
+
+[train]
+  threshold     : 400 (min 512×512 to qualify)
+  kept per class: 400
+  kept samples  : 37600
+  excluded classes (7):
+    cup_cakes                            380 512×512 images
+    pho                                  381 512×512 images
+    hamburger                            392 512×512 images
+    hot_dog                              392 512×512 images
+    pizza                                394 512×512 images
+    sushi                                398 512×512 images
+    donuts                               399 512×512 images
+
+[test]
+  threshold     : 100 (min 512×512 to qualify)
+  kept per class: 100
+  kept samples  : 9400
+  excluded classes (7):
+    cup_cakes                            120 512×512 images
+    sushi                                122 512×512 images
+    pizza                                123 512×512 images
+    pho                                  125 512×512 images
+    hot_dog                              129 512×512 images
+    hamburger                            137 512×512 images
+    donuts                               138 512×512 images
+
+compute_stats.py – stats summary of curated data
+==================================================
+
+37600/37600
+
+[train]
+
+Processed 37600 images (9,856,614,400 pixels)
+Mean: R=0.570501  G=0.452391  B=0.343890
+Std:  R=0.274114  G=0.279450  B=0.279709
