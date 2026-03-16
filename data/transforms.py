@@ -1,5 +1,5 @@
 from torchvision import transforms
-
+import torch
 # ──────────────────────────────────────────────
 # Directory / split layout
 # ──────────────────────────────────────────────
@@ -17,11 +17,15 @@ from torchvision import transforms
 # ──────────────────────────────────────────────
 
 train_transform = transforms.Compose([
+    transforms.RandomPerspective(),
+    transforms.RandomRotation(90),
     transforms.ToTensor(),
-    transforms.Normalize([0.570501, 0.452391, 0.343890], [0.274114, 0.279450, 0.279709])
+    transforms.Resize(224),
+    transforms.Normalize([0.570501, 0.452391, 0.343890], [0.274114, 0.279450, 0.279709]),
 ])
 
 val_transform = transforms.Compose([
     transforms.ToTensor(),
+    transforms.Resize(224),
     transforms.Normalize([0.570501, 0.452391, 0.343890], [0.274114, 0.279450, 0.279709])
 ])

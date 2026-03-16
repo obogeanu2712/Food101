@@ -5,3 +5,4 @@
 checkpoints
 runs
 onnx
+/logs
