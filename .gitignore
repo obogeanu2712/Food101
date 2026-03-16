@@ -6,3 +6,4 @@ checkpoints
 runs
 onnx
 /logs
+test.py
