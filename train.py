@@ -19,8 +19,9 @@ def train_one_epoch(model, loader, optimizer, criterion, device, epoch, epochs):
         X, y = X.to(device), y.to(device)
 
         optimizer.zero_grad()
-        y_pred = model(X)
-        loss = criterion(y_pred, y)
+        with torch.autocast(device_type='cuda', dtype=torch.float16) :
+            y_pred = model(X)
+            loss = criterion(y_pred, y)
         loss.backward()
         optimizer.step()
 
@@ -52,15 +53,15 @@ def evaluate(model, loader, criterion, device):
 if __name__ == '__main__':
     # --- Configuration ---
     EPOCHS = 100
-    BATCH_SIZE = 8 # Stop using 13. Just stop.
-    LEARNING_RATE = 1e-4
+    BATCH_SIZE = 64 # Stop using 13. Just stop.
+    LEARNING_RATE = 1e-5
     DEVICE = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
     VAL_INTERVAL = 1 # How often to run evaluation. 1 = every epoch.
     SAVE_DIR = "checkpoints"
     os.makedirs(SAVE_DIR, exist_ok=True)
 
     # --- Data & Model ---
-    train_loader, test_loader = get_dataloaders('./', batch_size=BATCH_SIZE, num_workers=4, pin_memory=True)
+    train_loader, test_loader = get_dataloaders('./', batch_size=BATCH_SIZE, num_workers=16, pin_memory=True)
     
     weights = ResNet50_Weights.IMAGENET1K_V2
     model = resnet50(weights=weights)
