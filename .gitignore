@@ -1,8 +1,0 @@
-/images
-/.vscode
-/meta
-*/__pycache__/*
-checkpoints
-runs
-onnx
-test.py
