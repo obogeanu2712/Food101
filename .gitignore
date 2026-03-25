@@ -1,2 +1,5 @@
 /images
 /meta
+.gitignore
+/.vscode
+/food-101
